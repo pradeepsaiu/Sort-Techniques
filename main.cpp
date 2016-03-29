@@ -3,13 +3,15 @@
 #include "quick.h"
 #include "merge.h"
 #include "Insertion.h"
+#include "heap.h"
+#include "radix.h"
 
 using namespace std;
 
 int main()
 {
 	int selection,size;
-	printf("Select the type of sort \n1.Exchange Sort\n2. Quick\n3. Merge Sort\n4. Insertion Sort\nEnter 9 or any character to quit\n");
+	printf("Select the type of sort \n1.Exchange Sort\n2. Quick\n3. Merge Sort\n4. Insertion Sort\n 5.Heap Sort\n6. Radix sort\nEnter 9 or any character to quit\n");
 	while((cin>>selection))
 	{
 		switch(selection)
@@ -86,11 +88,47 @@ int main()
 				list1.display();
 				break;
 			}
+			case 5:
+			{
+				printf("Enter the input size of the array\n");
+				cin>>size;
+				if(size>1000 || size <-1)
+				{
+					printf("Not a valid input size, try again");
+					break;
+				}
+				HeapSort list1(size);
+				list1.fill_list();
+				printf("\n Array before sorting \n");
+				list1.display();
+				list1.heap_sort(list1.size-1);
+				printf("Array after sorting\n");
+				list1.display();
+				break;
+			}
+			case 6:
+			{
+				printf("Enter the input size of the array\n");
+				cin>>size;
+				if(size>1000 || size <-1)
+				{
+					printf("Not a valid input size, try again");
+					break;
+				}
+				RadixSort list1(size);
+				list1.fill_list();
+				printf("\n Array before sorting \n");
+				list1.display();
+				list1.radix_sort(list1.size-1);
+				printf("Array after sorting\n");
+				list1.display();
+				break;
+			}
 			case 9: return(0);
 			default:cout<<"invalid option, try again";
 					break;
 
 		}
-		printf("Select the type of sort \n1.Exchange Sort\n2. Quick\n3. Merge Sort\n4. Insertion Sort\n9.Quit\n");
+		printf("Select the type of sort \n1.Exchange Sort\n2. Quick\n3. Merge Sort\n4. Insertion Sort\n5. Heap Sort\n6. Radix Sort\n9.Quit\n");
 	}
 }

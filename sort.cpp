@@ -1,4 +1,3 @@
-
 #include "sort.h"
 
 SortList::SortList(int size_runtime)
@@ -12,10 +11,10 @@ SortList::SortList(int size_runtime)
 void SortList::fill_list()
 {
 	srand(time(NULL));
-	int range=this->size*2;
+	int range=999;//radix sort
 	//taking double input size inorder to avoid collisions
 	if(this->size < 20)
-		range =15;
+		range =15;//radix sort
 	for(int i=0;i<this->size;i++)
 		{
 			this->input[i]=rand()%range +1;
@@ -30,6 +29,12 @@ void SortList::swap(int *left,int *right)
 }
 void SortList::display()
 {
+	for(int i=0;i<this->size;i++)
+		{
+			printf("%d\t",this->input[i]);
+		}
+		printf("\n");
+
 	if(this->size <=20)
 	{
 		for(int i=0;i<this->size;i++)
@@ -42,13 +47,13 @@ void SortList::display()
 		}
 		printf("\n");
 	}
-	else
-	{
-		for(int i=0;i<this->size;i++)
-		{
-			printf("%d\t",this->input[i]);
-		}
-		printf("\n");
-	}
+	// else
+	// {
+	// 	for(int i=0;i<this->size;i++)
+	// 	{
+	// 		printf("%d\t",this->input[i]);
+	// 	}
+	// 	printf("\n");
+	// }
 }
 

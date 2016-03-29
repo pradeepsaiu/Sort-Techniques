@@ -1,4 +1,4 @@
-all: exchange quick sort main merge selection run clean
+all: exchange quick sort main merge selection heap radix run clean
 
 #making object file for each -c representing not to link it.
 exchange: exchange.h
@@ -16,11 +16,17 @@ selection: Insertion.h
 sort: sort.h
 	g++ sort.cpp -o sort_out.o -c
 
+heap: heap.h
+	g++ heap.cpp -o heap_out.o -c
+
+radix: radix.h
+	g++ radix.cpp -o radix_out.o -c
+
 main:
 	g++ main.cpp -o main_out.o -c
 
-run: exchange_out.o sort_out.o main_out.o quick_out.o merge_out.o Insertion_out.o
-	g++ -o out exchange_out.o sort_out.o quick_out.o merge_out.o Insertion_out.o main_out.o
+run: exchange_out.o radix_out.o sort_out.o main_out.o quick_out.o merge_out.o Insertion_out.o heap_out.o
+	g++ -o out exchange_out.o radix_out.o sort_out.o quick_out.o merge_out.o Insertion_out.o heap_out.o main_out.o
 	./out
 
 clean:
